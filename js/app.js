@@ -63,15 +63,29 @@ App.FoodController = Ember.ArrayController.extend({
 		});
 	}
 });
-// AUTO-GENERATED
-//  App.TabController = Ember.ObjectController.extend({
-// // TODO: make deleteTabItem function
-// 	// deleteTabItem: function(param){
-// 	// 	debugger
-//  	//      	param.deleteRecord();
-// 	// }
-// });
-
+//AUTO-GENERATED
+ App.TabController = Ember.ObjectController.extend({
+  // deleteFood: function(item) {
+  //     var tabItems = this.get('model').get('tabItems');
+  //     tabItems.forEach(function(tabItem) {
+  //       if(tabItem && tabItem.get('food') && tabItem.get('food').get('id') === item.get('food').get('id')) {
+  //         tabItem.deleteRecord();
+  //       }
+  //     });
+  // }
+  // ,
+  deleteFood: function(foodItem) {
+      var tabItems = this.controllerFor('tab').get('tabItems')
+      
+      tabItems.forEach(function(item){
+        if(item.get('food') && item.get('food').get('id') === foodItem.get('food').get('id')) {
+          console.log(item.get('food').get('name')+' '+item.get('food').get('cents')+' '+item.get('food').get('id'))}
+          item.deleteRecord();
+      });
+      debugger;
+      this.controllerFor('table').get('model').save();
+  }
+});
 // Models
 App.Store = DS.Store.extend({
   revision: 11,

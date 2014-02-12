@@ -80,11 +80,11 @@
     
     <script type='text/x-handlebars' data-template-name='tab'>
       <ul id='customer-tab'>
-        {{#each tabItems}}
+        {{#each tabItem in tabItems}} {{controller}} 
         <!-- TODO: Add a deleteTabItem action -->
-       <!-- <a href='#' {{action 'deleteTabItem' this}} -->
-          <li><h3>{{food.name}} <span>${{money cents}} </span></h3></li>
-        <!--</a> -->
+        <a href='#' {{action 'deleteFood' tabItem}}
+          <li><h3>{{tabItem.food.name}} <span>${{money tabItem.cents}} </span></h3></li>
+        </a> 
           {{else}}
           <li><h3>Click a food to add it</h3></li>
         {{/each}}
@@ -98,5 +98,6 @@
     <script src="js/libs/ember.js"></script>
     <script src="js/libs/ember-data.js"></script>
     <script src="js/app.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Engagement' rel='stylesheet' type='text/css'>
   </body>
 </html>
